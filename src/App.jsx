@@ -26,21 +26,34 @@ const getUsers = () => {
 
 var modal = document.getElementById("ventanaModal");
 
-const showToast = (message) => {
-    const toast = document.getElementById( "toast" )
-    toast.textContent = message
-    toast.classList.add( "visible" )
+const showToastSuccess = (message) => {
+    const toast_sucess = document.getElementById( "toast-success" )
+    toast_sucess.textContent = message
+    toast_sucess.classList.add( "visible" )
 
     setTimeout( () =>{
-        toast.classList.remove( "visible" )
+        toast_sucess.classList.remove( "visible" )
+    }, 5000 )
+}
+
+const showToastError = (message) => {
+    const toast_error = document.getElementById( "toast-error" )
+    toast_error.textContent = message
+    toast_error.classList.add( "visible" )
+
+    setTimeout( () =>{
+        toast_error.classList.remove( "visible" )
     }, 5000 )
 }
 
   return (
     <div className="App">
-        <UserList userList={userList} selectUser={selectUser} getUsers={getUsers} modal={modal} showToast={showToast}/>
-        <UserForm userSelected={userSelected} getUsers={getUsers} selectUser={selectUser} modal={modal} showToast={showToast}/>
-        <div class="toast" id="toast">
+        <UserList userList={userList} selectUser={selectUser} getUsers={getUsers} modal={modal} showToastError={showToastError} showToastSuccess={showToastSuccess}/>
+        <UserForm userSelected={userSelected} getUsers={getUsers} selectUser={selectUser} modal={modal} showToastError={showToastError} showToastSuccess={showToastSuccess} />
+        <div className="toast-success" id="toast-success">
+          mensaje del toast
+        </div>
+        <div className="toast-error" id="toast-error">
           mensaje del toast
         </div>
     </div>

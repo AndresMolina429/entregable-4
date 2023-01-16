@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 
-const UserForm = ({userSelected, getUsers, selectUser, modal, showToast}) => {
+const UserForm = ({userSelected, getUsers, selectUser, modal, showToastError, showToastSuccess}) => {
    const { handleSubmit, register, reset } = useForm()
 
    useEffect(() => {
@@ -18,18 +18,31 @@ const UserForm = ({userSelected, getUsers, selectUser, modal, showToast}) => {
          .then(() => {
             getUsers()
             selectUser(null)
-            showToast('Registro Actualizado con Éxito!!!')
+            showToastSuccess('Record Updated Successfully!!!')
          })
+         .catch(err => {
+            for (let data in err.response.data) {
+               showToastError('Error in ' + data + ': ' + err.response.data[data])
+            }
+         })
+
          const dataUserReset = { first_name: '', last_name: '', email: '', password:'', birthday:'' }
          reset(dataUserReset)
          modal.style.display = "none";
       }else{
          axios.post(`https://users-crud.academlo.tech/users/`, dataUser)
-         .then(() => getUsers())
+         .then(() => {
+            getUsers()
+            showToastSuccess('Record Created Successfully!!!')
+         })
+         .catch(err => {
+            for (let data in err.response.data) {
+               showToastError('Error in ' + data + ': ' + err.response.data[data])
+            }
+         })
          const dataUserReset = { first_name: '', last_name: '', email: '', password:'', birthday:'' }
          reset(dataUserReset)
          modal.style.display = "none";
-         showToast('Registro Creado con Éxito!!!')
       }
    }
 
@@ -55,7 +68,7 @@ const UserForm = ({userSelected, getUsers, selectUser, modal, showToast}) => {
                 <div className='input'>
                  <label htmlFor="last_name">Last name</label>
                   <input type="text" id='last_name' placeholder='Last Name' required
-                   {...register("last_names")}
+                   {...register("last_name")}
                    />
                 </div>
               </div>
