@@ -308,3 +308,21 @@ button:hover{
   color: aliceblue;
   padding: 0 1rem;
 }
+
+.toast{
+    background: #38E54D;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    border-radius: 1rem;
+    width: 70%;
+    position: absolute;
+    bottom: 3.5rem;
+    left: 15%;
+    display: none;
+}
+
+.toast.visible{
+    display: block;
+}

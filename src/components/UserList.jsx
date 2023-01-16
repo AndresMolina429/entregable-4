@@ -2,11 +2,14 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 
-const UserList = ({userList, selectUser, getUsers, modal}) => {
+const UserList = ({userList, selectUser, getUsers, modal, showToast}) => {
 
     const deleteUser = (user) => {
       axios.delete(`https://users-crud.academlo.tech/users/${user.id}/`) 
-      .then(res => getUsers())
+      .then(res => {
+        getUsers()
+        showToast('Registro borrado con exito!!!')
+      })
     };
 
     const initializeForm = () => {

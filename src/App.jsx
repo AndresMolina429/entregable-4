@@ -16,7 +16,7 @@ function App() {
 
 const selectUser = (user) => {
    setUserSelected(user)
-  //  modal.style.display = "block";
+   modal.style.display = "block";
 };
 
 const getUsers = () => {
@@ -26,15 +26,23 @@ const getUsers = () => {
 
 var modal = document.getElementById("ventanaModal");
 
-var boton = document.getElementById("abrirModal");
+const showToast = (message) => {
+    const toast = document.getElementById( "toast" )
+    toast.textContent = message
+    toast.classList.add( "visible" )
 
-var span = document.getElementsByClassName("cerrar")[0];
-
+    setTimeout( () =>{
+        toast.classList.remove( "visible" )
+    }, 5000 )
+}
 
   return (
     <div className="App">
-        <UserList userList={userList} selectUser={selectUser} getUsers={getUsers} modal={modal}/>
-        <UserForm userSelected={userSelected} getUsers={getUsers} selectUser={selectUser} modal={modal}/>
+        <UserList userList={userList} selectUser={selectUser} getUsers={getUsers} modal={modal} showToast={showToast}/>
+        <UserForm userSelected={userSelected} getUsers={getUsers} selectUser={selectUser} modal={modal} showToast={showToast}/>
+        <div class="toast" id="toast">
+          mensaje del toast
+        </div>
     </div>
   )
 }

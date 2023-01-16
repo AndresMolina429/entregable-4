@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 
-const UserForm = ({userSelected, getUsers, selectUser, modal}) => {
+const UserForm = ({userSelected, getUsers, selectUser, modal, showToast}) => {
    const { handleSubmit, register, reset } = useForm()
 
    useEffect(() => {
@@ -18,6 +18,7 @@ const UserForm = ({userSelected, getUsers, selectUser, modal}) => {
          .then(() => {
             getUsers()
             selectUser(null)
+            showToast('Registro Actualizado con Éxito!!!')
          })
          const dataUserReset = { first_name: '', last_name: '', email: '', password:'', birthday:'' }
          reset(dataUserReset)
@@ -28,6 +29,7 @@ const UserForm = ({userSelected, getUsers, selectUser, modal}) => {
          const dataUserReset = { first_name: '', last_name: '', email: '', password:'', birthday:'' }
          reset(dataUserReset)
          modal.style.display = "none";
+         showToast('Registro Creado con Éxito!!!')
       }
    }
 
@@ -53,7 +55,7 @@ const UserForm = ({userSelected, getUsers, selectUser, modal}) => {
                 <div className='input'>
                  <label htmlFor="last_name">Last name</label>
                   <input type="text" id='last_name' placeholder='Last Name' required
-                   {...register("last_name")}
+                   {...register("last_names")}
                    />
                 </div>
               </div>
