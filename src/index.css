@@ -1,0 +1,310 @@
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  /* --text-color: #30AADD; */
+  --card-color: #30AADD;
+  --header-color: #247881;
+  --container-color: #247881;
+  --app-color: #240041;
+  --body-color: #240041;
+  --form-color: #30AADD;
+  --modal-color: #240041;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--body-color);
+}
+
+.App{
+  /* height: 100vh;
+  width: 100vw; */
+  background-color: var(--app-color);
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  justify-content: center;
+  padding: 0 5rem;
+}
+
+/* FORMULARIO- UserForm.jsx */
+input{
+  width: 100%;
+  height: 30px;
+  padding: 1rem;
+  border-radius: .5rem;
+  border:.1rem solid transparent;
+
+}
+form{
+  width: 500px;
+  height:440px;
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: var(--form-color);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  gap: 1rem;
+  margin: auto;
+}
+
+.input-container-name{
+  display: flex;
+  flex-direction: row;
+  gap:1rem
+}
+
+.button-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-form{
+  display: block;
+  width: 120px;
+  height: 40px;
+  border:.1rem solid transparent;
+  border-radius: .5rem;
+}
+
+.input-container-name{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0 0 0;
+}
+
+.input-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+.input{
+  width: 100%;
+}
+.icon-name{
+  padding: 0 1rem 0 0;
+}
+
+.input-icon{
+  margin-top: 1rem;
+}
+
+
+/* LISTA DE USUARIOS- UserList.jsx */
+
+li{
+  list-style: none;
+}
+
+/* responsive automatico */
+.users{
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(370px,
+    1fr
+    )
+  );
+  gap: 1rem;
+  width: 100%;
+}
+
+.card{
+  width: 370px;
+  height: 210px;
+  background-color: var(--card-color);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  align-items: center;
+  justify-content:space-between;
+  border-radius: .3rem;
+}
+
+.card-header{
+  border-bottom: .1rem solid rgb(188, 188, 188);
+  width: 100%;
+  text-align: center;
+  padding: 0 0 .6rem 0;
+}
+
+.card-body{
+  align-items: left;
+  width: 100%;
+  padding: .5rem;
+}
+
+.card-body ul{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  align-items: left;
+  width: 100%;
+}
+
+.card-body ul label{
+  color: gray;
+}
+
+.card-footer{
+  display: flex;
+  flex-direction: row;
+  border-top: .1rem solid rgb(188, 188, 188);
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding: .5rem;
+  gap: .7rem;
+}
+
+.button-list{
+  width: 35px;
+  height: 35px;
+  border-radius: .3rem;
+  border: .1rem solid transparent;
+}
+
+.delete{
+  color: red;
+}
+
+.edit{
+  color: green;
+}
+
+.container-users{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-users{
+  text-align: right;
+  padding: .5rem;
+  margin: 1rem 0;
+  background-color: var(--header-color);
+  border-radius: 1rem 0;
+}
+
+.body-users{
+  background-color: var(--body-color);
+}
+
+.create-user-btn{
+  text-decoration: none;
+}
+
+.button-create{
+  width: 140px;
+  height: 40px;
+  border-radius: .5rem;
+  border: .1rem solid transparent;
+}
+
+button:hover{
+  opacity: .8;
+  cursor: pointer;
+}
+
+.title-close{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-between;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.contenido-modal {
+  position: relative;
+  margin: auto;
+  padding: 20px;
+  width: 500px;
+  height:440px;
+  -webkit-animation-name: animarsuperior;
+  -webkit-animation-duration: 0.5s;
+  animation-name: animarsuperior;
+  animation-duration: 0.5s
+}
+
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animarsuperior {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+.close {
+  color: black;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.list {
+  display: block;
+  /* width: 90vw; */
+  /* height: 75vh; */
+  /* overflow-y: scroll; */
+  /* scroll-behavior: smooth; */
+}
+
+.container-page{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-page > button{
+  width: 40px;
+  height: 30px;
+}
+
+.prev-next{
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.prev-next > button{
+  width: 80px;
+  height: 30px;
+}
+
+.number-color{
+  color: aliceblue;
+  padding: 0 1rem;
+}
